@@ -39,6 +39,7 @@ dependencies {
     compile "org.springframework:spring-jdbc:$springVersion"
     compile "com.zaxxer:HikariCP:$hikariCPVersion"
     compile "mysql:mysql-connector-java:$mysqlConnectorVersion"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion"
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

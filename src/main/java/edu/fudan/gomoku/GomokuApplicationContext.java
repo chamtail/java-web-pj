@@ -49,18 +49,4 @@ public class GomokuApplicationContext extends WebMvcConfigurerAdapter {
         sqlSessionFactoryBean.setConfigurationProperties(properties);
         return sqlSessionFactoryBean;
     }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**")
-                .addResourceLocations("classpath:/static/assets/css/");
-        registry.addResourceHandler("/js/**")
-                .addResourceLocations("classpath:/static/assets/js/");
-        registry.addResourceHandler("/img/**")
-                .addResourceLocations("classpath:/static/assets/img/");
-        registry.addResourceHandler("/fonts/**")
-                .addResourceLocations("classpath:/static/assets/fonts/");
-        registry.addResourceHandler("*.ico")
-                .addResourceLocations("classpath:/static/assets/");
-    }
 }
