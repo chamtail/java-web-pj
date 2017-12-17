@@ -1,0 +1,44 @@
+group 'edu.fudan.309'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+ext {
+    springBootVersion = '1.4.1.RELEASE'
+    mybatisVersion = '3.3.0'
+    mybatisSpringVersion = '1.2.3'
+    springVersion = '4.2.4.RELEASE'
+    hikariCPVersion = '2.4.7'
+    mysqlConnectorVersion = '5.1.37'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
+    test {
+        resources {
+            srcDirs = ["src/test/resources/base"]
+        }
+    }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.mybatis:mybatis:$mybatisVersion"
+    compile "org.mybatis:mybatis-spring:$mybatisSpringVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    compile "com.zaxxer:HikariCP:$hikariCPVersion"
+    compile "mysql:mysql-connector-java:$mysqlConnectorVersion"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
