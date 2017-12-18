@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import Button from 'antd/lib/button';
 import './App.css';
+import Login from './Login';
 
 class App extends Component {
 
     constructor() {
         super();
-        this.setState({
-            
-        })
     }
 
     render() {
         return (
-            <div className="App">
-                <Button type="primary">Button</Button>
-            </div>
+            <Login/>
         );
     }
 }

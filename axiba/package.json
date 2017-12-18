@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "antd": "^3.0.1",
+    "async-validator": "^1.8.2",
+    "axios": "^0.17.1",
+    "draft-js": "^0.10.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
