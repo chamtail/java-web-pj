@@ -5,7 +5,7 @@ import Axios from "axios";
 
 const FormItem = Form.Item;
 
-class NormalRegisterForm extends React.Component {
+class NormalRegisterForm extends Component {
 
     constructor() {
         super();
