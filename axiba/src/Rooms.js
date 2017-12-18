@@ -144,7 +144,6 @@ class Room extends React.Component {
                     <Content>
                         <Table columns={this.state.columns} dataSource={this.state.rooms}/>
                     </Content>
-                    <Footer>Footer</Footer>
                 </Layout>
             </div>
         );

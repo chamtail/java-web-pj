@@ -1,5 +1,7 @@
 package edu.fudan.gomoku.core;
 
+import edu.fudan.gomoku.core.enums.ConnectResultEnum;
+import edu.fudan.gomoku.response.DisplayAreaGameResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -61,6 +63,45 @@ public class Engine {
         if (playerNames.size() == 0) {
             roomNameRoomMap.remove(roomName);
         }
+    }
+
+    public void startGame(String roomName) {
+        final Room room = roomNameRoomMap.get(roomName);
+        if (room == null) {
+            return;
+        }
+        room.setAreaGame(new AreaGame());
+    }
+
+    public void restartGame(String roomName) {
+        final Room room = roomNameRoomMap.get(roomName);
+        if (room == null) {
+            return;
+        }
+        room.getAreaGame().restart();
+    }
+
+    public ConnectResultEnum connect(String userName, String roomName, boolean isHorizontal, int row, int col) {
+        final Room room = roomNameRoomMap.get(roomName);
+        if (room == null) {
+            return null;
+        }
+        final int playerNo = room.getPlayerNames().indexOf(userName) + 1;
+        final AreaGame areaGame = room.getAreaGame();
+        return areaGame.connect(playerNo, isHorizontal, row, col);
+    }
+
+    public DisplayAreaGameResponse displayGame(String roomName) {
+        final Room room = roomNameRoomMap.get(roomName);
+        if (room == null) {
+            return null;
+        }
+        final AreaGame areaGame = room.getAreaGame();
+        DisplayAreaGameResponse displayAreaGameResponse = new DisplayAreaGameResponse();
+        displayAreaGameResponse.setHorizontal(areaGame.getHorizontal());
+        displayAreaGameResponse.setSquare(areaGame.getSquare());
+        displayAreaGameResponse.setVertical(areaGame.getVertical());
+        return displayAreaGameResponse;
     }
 
     private boolean canEnter(List<String> playerNames) {

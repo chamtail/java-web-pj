@@ -12,6 +12,8 @@ public class Room {
 
     private List<String> playerNames;
 
+    private AreaGame areaGame;
+
     public String getName() {
         return name;
     }
@@ -26,5 +28,13 @@ public class Room {
 
     public void setPlayerNames(List<String> playerNames) {
         this.playerNames = playerNames;
+    }
+
+    public AreaGame getAreaGame() {
+        return areaGame;
+    }
+
+    public void setAreaGame(AreaGame areaGame) {
+        this.areaGame = areaGame;
     }
 }

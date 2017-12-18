@@ -1,6 +1,8 @@
 package edu.fudan.gomoku.controller;
 
 import edu.fudan.gomoku.core.Engine;
+import edu.fudan.gomoku.core.enums.ConnectResultEnum;
+import edu.fudan.gomoku.response.DisplayAreaGameResponse;
 import edu.fudan.gomoku.response.ListRoomsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +39,25 @@ public class RoomController {
     @RequestMapping("/leave")
     public void leave(String roomName, String userName) {
         engine.leaveRoom(roomName, userName);
+    }
+
+    @RequestMapping("/display")
+    public DisplayAreaGameResponse display(String roomName) {
+        return engine.displayGame(roomName);
+    }
+
+    @RequestMapping("/start")
+    public void start(String roomName) {
+        engine.startGame(roomName);
+    }
+
+    @RequestMapping("/restart")
+    public void restart(String roomName) {
+        engine.restartGame(roomName);
+    }
+
+    @RequestMapping("/connect")
+    public ConnectResultEnum connect(String roomName, String userName, boolean isHorizontal, int row, int col) {
+        return engine.connect(userName, roomName, isHorizontal, row, col);
     }
 }
