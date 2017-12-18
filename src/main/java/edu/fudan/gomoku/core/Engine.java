@@ -98,9 +98,21 @@ public class Engine {
         }
         final AreaGame areaGame = room.getAreaGame();
         DisplayAreaGameResponse displayAreaGameResponse = new DisplayAreaGameResponse();
-        displayAreaGameResponse.setHorizontal(areaGame.getHorizontal());
-        displayAreaGameResponse.setSquare(areaGame.getSquare());
-        displayAreaGameResponse.setVertical(areaGame.getVertical());
+        final List<String> playerNames = room.getPlayerNames();
+        if (areaGame == null) {
+            displayAreaGameResponse.setHorizontal(new boolean[4][3]);
+            displayAreaGameResponse.setVertical(new boolean[3][4]);
+            displayAreaGameResponse.setSquare(new int[3][3]);
+            displayAreaGameResponse.setCurrentPlayer(null);
+        } else {
+            displayAreaGameResponse.setHorizontal(areaGame.getHorizontal());
+            displayAreaGameResponse.setVertical(areaGame.getVertical());
+            displayAreaGameResponse.setSquare(areaGame.getSquare());
+            final int currentPlayer = areaGame.getCurrentPlayer();
+            displayAreaGameResponse.setCurrentPlayer(currentPlayer >= playerNames.size() ? null : playerNames.get(currentPlayer));
+        }
+        displayAreaGameResponse.setPlayer1Name(playerNames.size() > 0 ? playerNames.get(0) : null);
+        displayAreaGameResponse.setPlayer2Name(playerNames.size() > 1 ? playerNames.get(1) : null);
         return displayAreaGameResponse;
     }
 

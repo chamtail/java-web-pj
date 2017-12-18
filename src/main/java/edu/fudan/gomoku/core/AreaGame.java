@@ -8,6 +8,8 @@ import edu.fudan.gomoku.core.enums.ConnectResultEnum;
  */
 public class AreaGame {
 
+    private int currentPlayer = 0;
+
     private boolean[][] horizontal = new boolean[4][3];
 
     private boolean[][] vertical = new boolean[3][4];
@@ -18,6 +20,7 @@ public class AreaGame {
         this.horizontal = new boolean[4][3];
         this.vertical = new boolean[3][4];
         this.square = new int[3][3];
+        currentPlayer = 0;
     }
 
     public ConnectResultEnum connect(int playerNo, boolean isHorizontal, int row, int col) {
@@ -38,6 +41,10 @@ public class AreaGame {
         return vertical;
     }
 
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
     public int[][] getSquare() {
         return square;
     }
@@ -51,6 +58,7 @@ public class AreaGame {
                 }
             }
         }
+        currentPlayer = 1 - currentPlayer;
         return false;
     }
 
@@ -62,6 +70,7 @@ public class AreaGame {
                 }
             }
         }
+        currentPlayer = 2;
         return true;
     }
 }

@@ -33,13 +33,22 @@ class App extends Component {
         })
     };
 
+    handleLeaveRoom = () => {
+        this.setState({
+            roomsVisible: true,
+            roomName: null,
+            roomVisible: false,
+        })
+    };
+
     render() {
         return (
             <div>
                 {this.state.loginVisible ? <Login onFinish={this.handleLoginFinish}/> : null}
                 {this.state.roomsVisible ?
                     <Rooms userName={this.state.userName} onEnterRoom={this.handleEnterRoom}/> : null}
-                {this.state.roomVisible ? <Room/> : null}
+                {this.state.roomVisible ? <Room roomName={this.state.roomName} userName={this.state.userName}
+                                                onLeave={this.handleLeaveRoom}/> : null}
             </div>
         );
     }

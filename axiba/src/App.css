@@ -54,3 +54,56 @@
 .create-form-input {
     margin-top: 30px;
 }
+
+.game-edge-horizontal {
+    height: 0;
+    border: 3px #000000 solid;
+    width: 25%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.game-edge-horizontal:hover {
+    box-shadow: 0 0 50px #000000;
+}
+
+.game-edge-vertical {
+    width: 0;
+    border: 3px #000000 solid;
+    height: 25%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 1.5px;
+    margin-left: -1.5px;
+}
+
+.game-edge-vertical:hover {
+    box-shadow: 0 0 50px #000000;
+}
+
+.game-edge-horizontal-stuffed {
+    height: 0;
+    border: 3px #adadad solid;
+    width: 25%;
+    position: absolute;
+    z-index: 1;
+}
+
+.game-edge-vertical-stuffed {
+    width: 0;
+    border: 3px #adadad solid;
+    height: 25%;
+    position: absolute;
+    z-index: 1;
+    margin-top: 1.5px;
+    margin-left: -1.5px;
+}
+
+.game-edge-square {
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    z-index: 0;
+}
