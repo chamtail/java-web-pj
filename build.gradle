@@ -13,6 +13,7 @@ ext {
     hikariCPVersion = '2.4.7'
     mysqlConnectorVersion = '5.1.37'
     nekoHtmlVersion = '1.9.15'
+    guavaVersion = '21.0'
 }
 
 repositories {
@@ -42,6 +43,7 @@ dependencies {
     compile "mysql:mysql-connector-java:$mysqlConnectorVersion"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion"
     compile "net.sourceforge.nekohtml:nekohtml:$nekoHtmlVersion"
+    compile "com.google.guava:guava:$guavaVersion"
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
