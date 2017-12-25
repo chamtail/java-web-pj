@@ -2,6 +2,9 @@ package edu.fudan.gomoku.core;
 
 import edu.fudan.gomoku.core.enums.ConnectResultEnum;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author xiaowangzi
  * @date 17-12-19
@@ -31,6 +34,25 @@ public class AreaGame {
         }
         return checkSquare(playerNo) ?
                 (done() ? ConnectResultEnum.COMPLETE : ConnectResultEnum.SQUARE) : ConnectResultEnum.NORMAL;
+    }
+
+    public int getWinner() {
+        Map<Integer, Integer> squareCount = new HashMap<>(3, 1);
+        for (int i = 0; i < square.length; ++i) {
+            for (int j = 0; j < square[0].length; ++j) {
+                squareCount.compute(square[i][j], (player, count) -> {
+                    if (count == null) {
+                        return 1;
+                    }
+                    return count + 1;
+                });
+            }
+        }
+        return squareCount.values().stream().mapToInt(a -> a).sum() == 9 ?
+                squareCount.entrySet().stream().reduce((integerIntegerEntry, integerIntegerEntry2) ->
+                        integerIntegerEntry.getValue() > integerIntegerEntry2.getValue() ?
+                                integerIntegerEntry : integerIntegerEntry2)
+                        .map(Map.Entry::getKey).orElse(0) : 0;
     }
 
     public boolean[][] getHorizontal() {

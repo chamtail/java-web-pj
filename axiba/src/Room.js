@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./App.css";
 import Axios from "axios";
-import {Avatar, Button, Icon, Layout, Modal, Spin, Tag} from "antd";
+import {Avatar, Button, Icon, Layout, Modal, notification, Spin, Tag} from "antd";
 
 const {Header, Content, Footer} = Layout;
 
@@ -16,6 +16,7 @@ class Room extends Component {
             player1Name: null,
             player2Name: null,
             currentPlayer: null,
+            over: false,
         };
     }
 
@@ -55,6 +56,12 @@ class Room extends Component {
                     player2Name: data.player2Name,
                     currentPlayer: data.currentPlayer,
                 });
+                if (data.winnerName !== null && !this.state.over) {
+                    this.openGameOver(this.props.userName === data.winnerName);
+                    this.setState({
+                        over: true,
+                    });
+                }
             });
     }
 
@@ -77,6 +84,18 @@ class Room extends Component {
             .then(() => {
                 this.fetch();
             });
+    };
+
+    openGameOver = (win) => {
+        notification.open({
+            message: 'Game Over',
+            description: win ? "You win!!!" : "You lose...",
+            icon: <Icon type={win ? "smile-circle" : "frown-circle"} style={{color: '#108ee9'}}/>,
+            btn: null,
+            onClose: this.setState({
+                over: false,
+            })
+        });
     };
 
     render() {

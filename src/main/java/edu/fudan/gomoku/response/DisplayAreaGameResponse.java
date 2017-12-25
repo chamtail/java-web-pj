@@ -21,6 +21,8 @@ public class DisplayAreaGameResponse implements Serializable {
 
     private String player2Name;
 
+    private String winnerName;
+
     public boolean[][] getHorizontal() {
         return horizontal;
     }
@@ -69,6 +71,14 @@ public class DisplayAreaGameResponse implements Serializable {
         this.player2Name = player2Name;
     }
 
+    public String getWinnerName() {
+        return winnerName;
+    }
+
+    public void setWinnerName(String winnerName) {
+        this.winnerName = winnerName;
+    }
+
     @Override
     public String toString() {
         return "DisplayAreaGameResponse{" +
@@ -78,6 +88,7 @@ public class DisplayAreaGameResponse implements Serializable {
                 ", currentPlayer='" + currentPlayer + '\'' +
                 ", player1Name='" + player1Name + '\'' +
                 ", player2Name='" + player2Name + '\'' +
+                ", winnerName='" + winnerName + '\'' +
                 '}';
     }
 }
