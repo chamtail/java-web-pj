@@ -57,7 +57,7 @@
 
 .game-edge-horizontal {
     height: 0;
-    border: 3px #000000 solid;
+    border: 3px #ffffff solid;
     width: 25%;
     position: absolute;
     cursor: pointer;
@@ -70,7 +70,7 @@
 
 .game-edge-vertical {
     width: 0;
-    border: 3px #000000 solid;
+    border: 3px #ffffff solid;
     height: 25%;
     position: absolute;
     cursor: pointer;
@@ -106,4 +106,13 @@
     height: 25%;
     position: absolute;
     z-index: 0;
+}
+
+.game-dot {
+    position: absolute;
+    border: 3px #000000 solid;
+    width: 0;
+    height: 0;
+    z-index: 2;
+    margin-left: -1.5px;
 }

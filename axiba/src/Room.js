@@ -99,6 +99,15 @@ class Room extends Component {
                 </Header>
                 <Content>
                     <div>
+                        {[0, 1, 2, 3].map((rowIndex) =>
+                            [0, 1, 2, 3].map((colIndex) =>
+                                <div className="game-dot"
+                                     style={{
+                                         top: (15 + rowIndex * 25) + "%",
+                                         left: (12 + colIndex * 25) + "%"
+                                     }}/>
+                            )
+                        )}
                         {this.state.horizontal.map((row, rowIndex) =>
                             row.map((stroke, colIndex) =>
                                 <div className={stroke ? "game-edge-horizontal-stuffed" : "game-edge-horizontal"}
@@ -145,7 +154,7 @@ class Room extends Component {
                                      style={{
                                          left: (12 + colIndex * 25) + "%",
                                          top: (15 + rowIndex * 25) + "%",
-                                         background: fill === 0 ? "white" : ( fill === 1 ? "red" : "yellow")
+                                         background: fill === 0 ? "white" : (fill === 1 ? "red" : "yellow")
                                      }}/>)
                         )}
                     </div>
