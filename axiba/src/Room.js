@@ -42,6 +42,10 @@ class Room extends Component {
                 player2Name: "admin",
                 currentPlayer: "admin",
             });
+            this.openGameOver(this.props.userName === "xiaowangzi");
+            this.setState({
+                over: true,
+            });
             return;
         }
         Axios
@@ -79,6 +83,9 @@ class Room extends Component {
     };
 
     handleStart = () => {
+        this.setState({
+            over: false,
+        });
         Axios
             .get(`/rooms/start?roomName=${this.props.roomName}`)
             .then(() => {
@@ -89,6 +96,7 @@ class Room extends Component {
     openGameOver = (win) => {
         notification.open({
             message: 'Game Over',
+            duration: null,
             description: win ? "You win!!!" : "You lose...",
             icon: <Icon type={win ? "smile-circle" : "frown-circle"} style={{color: '#108ee9'}}/>,
             btn: null,
@@ -101,7 +109,7 @@ class Room extends Component {
     render() {
         return (
             <div>
-                <Modal visible={this.state.currentPlayer === null || this.state.currentPlayer !== this.props.userName}
+                <Modal visible={this.state.currentPlayer !== null && this.state.currentPlayer !== this.props.userName}
                        closable={false} footer={null}>
                     <Spin tip="Waiting for the opponent..."
                           style={{display: "block"}}/>
@@ -139,7 +147,7 @@ class Room extends Component {
                                          onClick={() => {
                                              let userName = this.props.userName;
                                              let currentPlayer = this.state.currentPlayer;
-                                             if (userName === currentPlayer || currentPlayer === null) {
+                                             if (userName !== currentPlayer || currentPlayer === null) {
                                                  return;
                                              }
                                              Axios
@@ -159,7 +167,7 @@ class Room extends Component {
                                          onClick={() => {
                                              let userName = this.props.userName;
                                              let currentPlayer = this.state.currentPlayer;
-                                             if (userName === currentPlayer || currentPlayer === null) {
+                                             if (userName !== currentPlayer || currentPlayer === null) {
                                                  return;
                                              }
                                              Axios

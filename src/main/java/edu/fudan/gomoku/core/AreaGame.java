@@ -38,9 +38,12 @@ public class AreaGame {
 
     public int getWinner() {
         Map<Integer, Integer> squareCount = new HashMap<>(3, 1);
-        for (int i = 0; i < square.length; ++i) {
+        for (int[] aSquare : square) {
             for (int j = 0; j < square[0].length; ++j) {
-                squareCount.compute(square[i][j], (player, count) -> {
+                if (aSquare[j] == 0) {
+                    continue;
+                }
+                squareCount.compute(aSquare[j], (player, count) -> {
                     if (count == null) {
                         return 1;
                     }
