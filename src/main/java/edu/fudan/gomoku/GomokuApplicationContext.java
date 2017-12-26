@@ -7,9 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -17,7 +14,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 @MapperScan(value = "edu.fudan.gomoku.repository.mapper")
-public class GomokuApplicationContext extends WebMvcConfigurerAdapter {
+public class GomokuApplicationContext {
 
     public static void main(String[] args) {
         SpringApplication.run(GomokuApplicationContext.class, args);
