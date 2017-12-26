@@ -75,16 +75,17 @@ public class AreaGame {
     }
 
     private boolean checkSquare(int playNo) {
+        boolean newSquare = false;
         for (int i = 0; i < square.length; ++i) {
             for (int j = 0; j < square[0].length; ++j) {
                 if (square[i][j] == 0 && horizontal[i][j] && horizontal[i + 1][j] && vertical[i][j] && vertical[i][j + 1]) {
                     square[i][j] = playNo;
-                    return true;
+                    newSquare = true;
                 }
             }
         }
-        currentPlayer = 1 - currentPlayer;
-        return false;
+        currentPlayer = newSquare ? currentPlayer : 1 - currentPlayer;
+        return newSquare;
     }
 
     private boolean done() {
