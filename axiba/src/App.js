@@ -41,14 +41,24 @@ class App extends Component {
         })
     };
 
+    shouldFetchRooms = () => {
+        return this.state.roomName === null;
+    };
+
+    shouldFetchRoom = () => {
+        return !this.shouldFetchRooms();
+    };
+
     render() {
         return (
             <div>
                 {this.state.loginVisible ? <Login onFinish={this.handleLoginFinish}/> : null}
                 {this.state.roomsVisible ?
-                    <Rooms userName={this.state.userName} onEnterRoom={this.handleEnterRoom}/> : null}
+                    <Rooms userName={this.state.userName} onEnterRoom={this.handleEnterRoom}
+                           shouldFetch={this.shouldFetchRooms}/> : null}
                 {this.state.roomVisible ? <Room roomName={this.state.roomName} userName={this.state.userName}
-                                                onLeave={this.handleLeaveRoom}/> : null}
+                                                onLeave={this.handleLeaveRoom}
+                                                shouldFetch={this.shouldFetchRoom}/> : null}
             </div>
         );
     }

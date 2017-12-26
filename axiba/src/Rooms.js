@@ -53,6 +53,9 @@ class Room extends React.Component {
     }
 
     fetch() {
+        if (!this.props.shouldFetch()) {
+            return;
+        }
         // todo
         if (this.props.userName === "admin") {
             let rooms = [];
@@ -113,6 +116,7 @@ class Room extends React.Component {
             .then((ret) => {
                 if (ret.data === true) {
                     this.props.onEnterRoom(roomName);
+                    this.componentDidUnmount();
                     return;
                 }
                 Modal.error({
@@ -130,6 +134,7 @@ class Room extends React.Component {
 
     handleRoomCreateSuccess = (roomName) => {
         this.props.onEnterRoom(roomName);
+        this.componentDidUnmount();
     };
 
     render() {

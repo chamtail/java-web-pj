@@ -32,6 +32,9 @@ class Room extends Component {
     }
 
     fetch() {
+        if (!this.props.shouldFetch()) {
+            return;
+        }
         // todo
         if (this.props.roomName === "lililala") {
             this.setState({
@@ -79,6 +82,7 @@ class Room extends Component {
             .get(`/rooms/leave?roomName=${this.props.roomName}&userName=${this.props.userName}`)
             .then(() => {
                 this.props.onLeave();
+                this.componentDidUnmount();
             });
     };
 
